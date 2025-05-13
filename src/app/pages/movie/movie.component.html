@@ -1,0 +1,20 @@
+<h1 class=" text-center text-5xl font-serif text-uppercase text-decoration-underline">{{movie.title}} Movie Details</h1>
+<div *ngIf="movie" class="p-10 flex flex-col lg:flex-row gap-20">
+  <div>
+    <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="rounded-2xl" style="height: 70vh; width: 90vw;">
+  </div>
+    <div>
+    <h1 class="text-4xl font-bold mb-4">{{ movie.title }}</h1>
+    <p class=" text-3xl font-semibold">{{movie.tagline}}</p>
+    <p class=" text-2xl"><strong>Release Date:</strong> {{ movie.release_date }}</p>
+    <p><strong class=" text-2xl">Rating: </strong> {{ movie.vote_average }}/10</p>
+    <p><strong class=" text-2xl">Generes: </strong><span class=" font-medium">{{movie.genres[0].name}}, {{movie.genres[1].name}}</span></p>
+    <p><strong class=" text-2xl">RunTime: </strong>{{movie.runtime}} min</p>
+    <p><strong class=" text-2xl">Stutus:</strong>  {{movie.status}}</p>
+    <p class="mt-4 text-justify text-2xl">{{ movie.overview }}</p>
+    </div>
+    <!-- <a routerLink="/" class="text-blue-600 underline">← Back to Home</a> -->
+</div>
+
+
+

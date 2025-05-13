@@ -1,0 +1,32 @@
+<div class="mt-10 ml-10 px-10 md:flex justify-between">
+  <select id="genres" name="genres"class="p-2 rounded-lg border border-gray-300 shadow-sm"[(ngModel)]="selectdGenreId"(change)="onGenreChange()">
+    <!-- <label for="genres" class="block text-lg font-semibold mb-2">Select Genres</label> -->
+    <option value="">Select Genres</option>
+    <option *ngFor="let genre of data" [value]="genre.id">
+      {{ genre.name }}
+    </option>
+  </select>
+  <div>
+    <input type="text" placeholder="Serch Movie" [(ngModel)]="serchmoviename" class="  border-2 p-2 rounded-2xl">
+    <button class=" border-2 p-2 rounded-2xl text-white text-2xl hover:scale-105 cursor-pointer" (click)="searchmovies()">🔍</button>
+    </div>
+  </div>
+<section class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 mt-10 ml-10 px-10">
+    <div class="movie p-5 rounded-2xl bg-white shadow-lg shadow-blue-500 hover:shadow-amber-400 hover:scale-105 transition-transform duration-200 ease-in" *ngFor="let p of popularmovies">
+        <img src="https://image.tmdb.org/t/p/w500/{{p.poster_path}}" alt="{{p.title}}" style="height: 300px;" class=" rounded-2xl w-full">
+        <h2 class=" font-bold text-3xl text-center">{{p.title}}</h2>
+        <p class=" text-center"><span class=" font-bold text-2xl">Realese Date: </span>{{p.release_date}}</p>
+        <p class="text-justify mt-3 transition-all duration-300" *ngIf="isshow">
+            {{p.overview}}
+        </p>
+        <div class=" flex justify-center mt-2">
+          <button class=" border-2 p-1.5 w-52 bg-amber-400 rounded-2xl hover:bg-amber-600">
+            <a [routerLink]="['/movie', p.id]" class=" text-2xl">View Details</a></button>
+        </div>
+        <!-- <div class=" d-flex justify-center ml-5">
+            <button class="mt-4 py-2 bg-amber-500 text-white font-semibold rounded-xl hover:bg-amber-600 transition-all duration-300 w-50 md:w-75" (click)="toggleDetails(p)">
+                {{ p.isshow ? "Hide Details" : "View Details" }}
+            </button>
+        </div> -->
+    </div>
+</section>
